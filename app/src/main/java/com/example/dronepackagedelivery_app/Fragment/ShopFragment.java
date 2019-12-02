@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 
 import com.example.dronepackagedelivery_app.Adapter.FragPageAdapter;
 import com.example.dronepackagedelivery_app.Adapter.ProductRecyclerViewAdapter;
@@ -20,6 +21,7 @@ import com.example.dronepackagedelivery_app.Data.ProductData;
 import com.example.dronepackagedelivery_app.Interface.OnCartChangedListener;
 import com.example.dronepackagedelivery_app.Interface.OnProductCountChangedListenner;
 import com.example.dronepackagedelivery_app.R;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.HashMap;
 
@@ -59,26 +61,41 @@ public class ShopFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shop, container, false);
-        ViewPager vpPager = (ViewPager) v.findViewById(R.id.vpPager);
         fragmentPagerAdapter = new FragPageAdapter(getFragmentManager());
+        ViewPager vpPager = (ViewPager) v.findViewById(R.id.vpPager);
+        TabLayout tabLayout = v.findViewById(R.id.tab_layout);
+
+
+        ProductFragment foodProdFrag = ProductFragment.newInstance(2,"Food",mCartRef);
+        ProductFragment drinkProdFrag = ProductFragment.newInstance(2,"Drink",mCartRef);
+        ProductFragment firutProdFrag = ProductFragment.newInstance(2,"Firut",mCartRef);
+        ProductFragment asdProdFrag = ProductFragment.newInstance(1,"ASD",mCartRef);
+        ProductFragment cccProdFrag = ProductFragment.newInstance(2,"CCC",mCartRef);
+        ProductFragment buyukFoodFrag = ProductFragment.newInstance(1,"BUYUK FOOD",mCartRef);
+        ProductFragment mediumFoodFrag = ProductFragment.newInstance(2,"MEDUIM FOOD",mCartRef);
+        ProductFragment kucukYemekFrag = ProductFragment.newInstance(2,"KUCUK YEMEK",mCartRef);
+
+        fragmentPagerAdapter.addPage(foodProdFrag);
+        fragmentPagerAdapter.addPage(drinkProdFrag);
+        fragmentPagerAdapter.addPage(firutProdFrag);
+        fragmentPagerAdapter.addPage(asdProdFrag);
+        fragmentPagerAdapter.addPage(cccProdFrag);
+        fragmentPagerAdapter.addPage(buyukFoodFrag);
+        fragmentPagerAdapter.addPage(kucukYemekFrag);
+        fragmentPagerAdapter.addPage(mediumFoodFrag);
+
+
         vpPager.setAdapter(fragmentPagerAdapter);
-
-
-   //     if(mTestArg.equals("1")){
-            ProductFragment foodProdFrag = ProductFragment.newInstance(2,"Food",mCartRef);
-            ProductFragment drinkProdFrag = ProductFragment.newInstance(2,"Drink",mCartRef);
-            fragmentPagerAdapter.addPage(foodProdFrag);
-            fragmentPagerAdapter.addPage(drinkProdFrag);
-       // }else{
-            ProductFragment firutProdFrag = ProductFragment.newInstance(2,"Firut",mCartRef);
-            ProductFragment asdProdFrag = ProductFragment.newInstance(2,"ASD",mCartRef);
-            ProductFragment cccProdFrag = ProductFragment.newInstance(2,"CCC",mCartRef);
-            fragmentPagerAdapter.addPage(firutProdFrag);
-            fragmentPagerAdapter.addPage(asdProdFrag);
-            fragmentPagerAdapter.addPage(cccProdFrag);
-     //   }
-
+        tabLayout.setupWithViewPager(vpPager);
         fragmentPagerAdapter.notifyDataSetChanged();
+
+      /*  //TODO: THESE SHOULD BE CALLED AUTOMATICALLY BY setupWithViewPager() FIX IT
+        tabLayout.getTabAt(0).setText(foodProdFrag.toString());
+        tabLayout.getTabAt(1).setText(drinkProdFrag.toString());
+        tabLayout.getTabAt(2).setText(firutProdFrag.toString());
+        tabLayout.getTabAt(3).setText(asdProdFrag.toString());
+        tabLayout.getTabAt(4).setText(cccProdFrag.toString());*/
+
         return v;
     }
 

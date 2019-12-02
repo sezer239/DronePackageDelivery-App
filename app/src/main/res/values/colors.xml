@@ -8,4 +8,5 @@
     <color name="lightgreen">#92ac6d</color>
     <color name="darkgreen">#485541</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="lightred">#FF5B5B</color>
 </resources>

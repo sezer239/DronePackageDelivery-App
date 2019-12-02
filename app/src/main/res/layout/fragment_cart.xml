@@ -44,7 +44,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="30dp"
             android:layout_weight="0.4"
-            android:text="Confirm"></Button>
+            android:text="Tamamla"></Button>
 
     </LinearLayout>
 

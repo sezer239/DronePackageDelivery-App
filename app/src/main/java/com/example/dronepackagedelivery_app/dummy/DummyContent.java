@@ -17,6 +17,9 @@ public class DummyContent {
     public static final List<Pair<ProductData,Integer>> FIRUT_PROD = new ArrayList<Pair<ProductData,Integer>>();
     public static final List<Pair<ProductData,Integer>> ASD_PROD = new ArrayList<Pair<ProductData,Integer>>();
     public static final List<Pair<ProductData,Integer>> CCC_PROD = new ArrayList<Pair<ProductData,Integer>>();
+    public static final List<Pair<ProductData,Integer>> BUYUK_PROD = new ArrayList<Pair<ProductData,Integer>>();
+    public static final List<Pair<ProductData,Integer>> MEDIUM_PROD = new ArrayList<Pair<ProductData,Integer>>();
+    public static final List<Pair<ProductData,Integer>> KUCUK_PROD = new ArrayList<Pair<ProductData,Integer>>();
 
 
     private static final int COUNT = 10;
@@ -41,7 +44,17 @@ public class DummyContent {
             CCC_PROD.add(createDummyItem(i,"CCC"));
         }
 
+        for (int i = COUNT * 5; i < COUNT * 6; i++) {
+            BUYUK_PROD.add(createDummyItem(i,"BUYUK FOOD"));
+        }
 
+        for (int i = COUNT * 6; i < COUNT * 7; i++) {
+            MEDIUM_PROD.add(createDummyItem(i,"MEDUIM FOOD"));
+        }
+
+        for (int i = COUNT * 7; i < COUNT * 8; i++) {
+            KUCUK_PROD.add(createDummyItem(i,"KUCUK YEMEK"));
+        }
     }
 
     private static Pair<ProductData,Integer> createDummyItem(int position, String category) {

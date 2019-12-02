@@ -60,6 +60,21 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         }
     }
 
+    public void updateListProductCount(List<Pair<ProductData, Integer>> products){
+        if(products.size() > 0){
+            for(int i = 0 ;i <products.size() ; i++){
+                for(int j = 0; j < mValues.size() ; j++){
+                    if(mValues.get(j).first.equals(products.get(i).first)){
+                        mValues.get(j).second = products.get(i).second;
+                        notifyItemChanged(j);
+                    }
+                }
+            }
+        }else {
+            clearBuyCounts();
+        }
+    }
+
     public void updateListProductCount(ProductData productData, int productCount){
         if(productCount < 0) {
             throw new RuntimeException("NO NEGATIVES PLZ");

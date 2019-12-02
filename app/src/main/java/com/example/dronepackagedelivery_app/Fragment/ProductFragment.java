@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dronepackagedelivery_app.Adapter.ProductRecyclerViewAdapter;
+import com.example.dronepackagedelivery_app.Data.Pair;
 import com.example.dronepackagedelivery_app.Data.ProductData;
 import com.example.dronepackagedelivery_app.Interface.OnCartChangedListener;
 import com.example.dronepackagedelivery_app.Interface.OnProductCountChangedListenner;
@@ -22,7 +23,9 @@ import com.example.dronepackagedelivery_app.R;
 import com.example.dronepackagedelivery_app.Data.Cart;
 import com.example.dronepackagedelivery_app.dummy.DummyContent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class ProductFragment extends Fragment implements ProductRecyclerViewAdapter.OnProductButtonPressed , OnCartChangedListener {
@@ -48,6 +51,7 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             mProductCatagory = getArguments().getString(ARG_PRODUCT_CATEGORY);
+
         }
     }
 
@@ -56,10 +60,12 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
                                               Cart cartRef) {
         ProductFragment fragment = new ProductFragment();
         fragment.mCartRef = cartRef;
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        args.putString(ARG_PRODUCT_CATEGORY, productCategory);
-        fragment.setArguments(args);
+        fragment.mProductCatagory = productCategory;
+        fragment.mColumnCount = columnCount;
+      //  Bundle args = new Bundle();
+      //  args.putInt(ARG_COLUMN_COUNT, columnCount);
+      ////  args.putString(ARG_PRODUCT_CATEGORY, productCategory);
+       // fragment.setArguments(args);
         return fragment;
     }
 
@@ -97,6 +103,15 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
                 case "CCC":
                     productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.CCC_PROD, mListener,this);
                     break;
+                case "BUYUK FOOD":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.BUYUK_PROD, mListener,this);
+                    break;
+                case "MEDUIM FOOD":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.MEDIUM_PROD, mListener,this);
+                    break;
+                case "KUCUK YEMEK":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.KUCUK_PROD, mListener,this);
+                    break;
                 default:
                     productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.FOOD_PROD, mListener,this);
                     break;
@@ -108,6 +123,29 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
         return view;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("FFF", toString() + " Resume");
+        List<Pair<ProductData, Integer>> products = new ArrayList<>();
+        HashMap<ProductData, Integer> cart = mCartRef.getCart();
+
+        for(ProductData key : cart.keySet()){
+            if(key.getmCategory().equals(mProductCatagory)){
+                products.add(new Pair<ProductData, Integer>(key, cart.get(key)));
+            }
+        }
+
+        productRecyclerViewAdapter.updateListProductCount(products);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("FFF", toString() + " Pause");
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -125,6 +163,7 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        mCartRef.removeOnCartChangedListener(this);
     }
 
     @Override

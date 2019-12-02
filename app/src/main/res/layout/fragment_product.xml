@@ -58,11 +58,11 @@
                     android:id="@+id/remove_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_bg_button"
+                    android:background="@drawable/rounded_bg_button_light_red"
                     android:textAlignment="center"
                     android:text="-"
                     android:textAppearance="?attr/textAppearanceListItem"
-                    android:textColor="@color/darkgreen"
+                    android:textColor="@color/white"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 
@@ -82,11 +82,11 @@
                     android:id="@+id/add_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_bg_button"
+                    android:background="@drawable/rounded_bg_button_green"
                     android:textAlignment="center"
                     android:text="+"
                     android:textAppearance="?attr/textAppearanceListItem"
-                    android:textColor="@color/darkgreen"
+                    android:textColor="@color/white"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 
