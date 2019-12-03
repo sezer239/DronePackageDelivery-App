@@ -1,6 +1,6 @@
 package com.example.dronepackagedelivery_app.data;
 
-import com.example.dronepackagedelivery_app.ınterface.OnCartChangedListener;
+import com.example.dronepackagedelivery_app.ınterfaces.OnCartChangedListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 

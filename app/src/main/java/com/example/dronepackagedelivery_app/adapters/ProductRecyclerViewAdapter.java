@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.adapter;
+package com.example.dronepackagedelivery_app.adapters;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.dronepackagedelivery_app.data.Pair;
 import com.example.dronepackagedelivery_app.data.ProductData;
-import com.example.dronepackagedelivery_app.fragment.ProductFragment.OnListFragmentInteractionListener;
+import com.example.dronepackagedelivery_app.fragments.ProductFragment.OnListFragmentInteractionListener;
 import com.example.dronepackagedelivery_app.R;
 
 import java.util.List;

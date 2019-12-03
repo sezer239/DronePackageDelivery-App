@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.fragment;
+package com.example.dronepackagedelivery_app.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.dronepackagedelivery_app.adapter.FragPageAdapter;
+import com.example.dronepackagedelivery_app.adapters.FragPageAdapter;
 import com.example.dronepackagedelivery_app.data.Cart;
 import com.example.dronepackagedelivery_app.R;
 import com.google.android.material.tabs.TabLayout;

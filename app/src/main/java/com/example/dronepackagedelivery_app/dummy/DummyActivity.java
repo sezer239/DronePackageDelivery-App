@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dronepackagedelivery_app.data.ProductData;
-import com.example.dronepackagedelivery_app.fragment.CartFragment;
-import com.example.dronepackagedelivery_app.fragment.LoginFragment;
-import com.example.dronepackagedelivery_app.fragment.ProductFragment;
-import com.example.dronepackagedelivery_app.fragment.ShopFragment;
-import com.example.dronepackagedelivery_app.ınterface.OnCartChangedListener;
+import com.example.dronepackagedelivery_app.fragments.CartFragment;
+import com.example.dronepackagedelivery_app.fragments.LoginFragment;
+import com.example.dronepackagedelivery_app.fragments.ProductFragment;
+import com.example.dronepackagedelivery_app.fragments.ShopFragment;
+import com.example.dronepackagedelivery_app.ınterfaces.OnCartChangedListener;
 import com.example.dronepackagedelivery_app.R;
 import com.example.dronepackagedelivery_app.data.Cart;
 

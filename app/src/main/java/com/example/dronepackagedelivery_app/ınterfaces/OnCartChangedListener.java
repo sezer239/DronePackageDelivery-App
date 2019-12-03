@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.ınterface;
+package com.example.dronepackagedelivery_app.ınterfaces;
 
 import com.example.dronepackagedelivery_app.data.ProductData;
 

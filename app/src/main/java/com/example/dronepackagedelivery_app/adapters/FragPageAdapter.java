@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.adapter;
+package com.example.dronepackagedelivery_app.adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

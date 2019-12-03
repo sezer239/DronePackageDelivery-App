@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.fragment;
+package com.example.dronepackagedelivery_app.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

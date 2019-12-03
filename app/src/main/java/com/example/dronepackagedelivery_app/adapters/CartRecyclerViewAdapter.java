@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.adapter;
+package com.example.dronepackagedelivery_app.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
