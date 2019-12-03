@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class DummyActivity extends AppCompatActivity
         implements ShopFragment.OnFragmentInteractionListener,ProductFragment.OnListFragmentInteractionListener,
-        OnCartChangedListener, CartFragment.OnFragmentInteractionListener , CartFragment.OnItemsPurchased, LoginFragment.OnLoginListener {
+    OnCartChangedListener, CartFragment.OnFragmentInteractionListener , CartFragment.OnItemsPurchased, LoginFragment.OnLoginListener {
 
     private TextView totalPrice;
     private ImageButton cartButton;
@@ -43,7 +43,7 @@ public class DummyActivity extends AppCompatActivity
         totalPrice.setVisibility(View.INVISIBLE);
         cartButton.setVisibility(View.INVISIBLE);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, LoginFragment.newInstance(), "LOGIN_FRAGMENT").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, LoginFragment.newInstance(), "LOGIN_FRAGMENT").commit();
     }
 
     @Override
@@ -120,7 +120,7 @@ public class DummyActivity extends AppCompatActivity
         shoppingCart.addOnCartChangedListener(this);
         shopFragment = ShopFragment.newInstance("1",shoppingCart);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, shopFragment,"SHOP_FRAGMENT").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, shopFragment,"SHOP_FRAGMENT").commit();
 
         cartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +128,7 @@ public class DummyActivity extends AppCompatActivity
                 CartFragment cartFragment = (CartFragment) getSupportFragmentManager().findFragmentByTag("CART_FRAGMENT");
                 if(cartFragment == null){
                     getSupportFragmentManager().beginTransaction().hide(shopFragment).commit();
-                    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, CartFragment.newInstance(shoppingCart, DummyActivity.this), "CART_FRAGMENT").commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.container, CartFragment.newInstance(shoppingCart, DummyActivity.this), "CART_FRAGMENT").commit();
                 }else{
                     getSupportFragmentManager().beginTransaction().remove(cartFragment).commit();
                     getSupportFragmentManager().beginTransaction().show(shopFragment).commit();

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,14 @@ import com.example.dronepackagedelivery_app.data.Cart;
 import com.example.dronepackagedelivery_app.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class ShopFragment extends Fragment {
+public class ShopFragment extends Fragment implements
+        com.example.dronepackagedelivery_app.ınterfaces.OnBackPressed {
 
-    private static final String TEST_ARG = "test-arg";
+    private static final String ARG_CATEGORY = "category";
 
     private OnFragmentInteractionListener mListener;
     private FragPageAdapter fragmentPagerAdapter;
-    private String mTestArg;
+    private String mArgCategory;
 
     private Cart mCartRef;
 
@@ -30,11 +32,11 @@ public class ShopFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static ShopFragment newInstance(String testArg,Cart cartref) {
+    public static ShopFragment newInstance(String category,Cart cartref) {
         ShopFragment fragment = new ShopFragment();
         fragment.mCartRef = cartref;
         Bundle args = new Bundle();
-        args.putString(TEST_ARG, testArg);
+        args.putString(ARG_CATEGORY, category);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,7 +45,7 @@ public class ShopFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mTestArg = getArguments().getString(TEST_ARG);
+            mArgCategory = getArguments().getString(ARG_CATEGORY);
         }
     }
 
@@ -80,12 +82,15 @@ public class ShopFragment extends Fragment {
         tabLayout.setupWithViewPager(vpPager);
         fragmentPagerAdapter.notifyDataSetChanged();
 
-      /*  //TODO: THESE SHOULD BE CALLED AUTOMATICALLY BY setupWithViewPager() FIX IT
-        tabLayout.getTabAt(0).setText(foodProdFrag.toString());
-        tabLayout.getTabAt(1).setText(drinkProdFrag.toString());
-        tabLayout.getTabAt(2).setText(firutProdFrag.toString());
-        tabLayout.getTabAt(3).setText(asdProdFrag.toString());
-        tabLayout.getTabAt(4).setText(cccProdFrag.toString());*/
+        Log.d("HHH" , "argCAT "+ mArgCategory);
+        if(mArgCategory.equals("Meyve & Sebze")){
+            tabLayout.getTabAt(0).select();
+        }else if(mArgCategory.equals("Unlu Mamüller")){
+            Log.d("HHH" , "UNLU MAMUL");
+            tabLayout.getTabAt(1).select();
+        }else if(mArgCategory.equals("Yiyecek")){
+            tabLayout.getTabAt(2).select();
+        }
 
         return v;
     }
@@ -106,6 +111,12 @@ public class ShopFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+  @Override
+    public void onBackPressed() {
+        getActivity().getSupportFragmentManager().popBackStack();
+    }
+
 
 
     public interface OnFragmentInteractionListener {
