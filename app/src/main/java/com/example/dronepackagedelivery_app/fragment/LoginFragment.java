@@ -1,7 +1,6 @@
-package com.example.dronepackagedelivery_app.Fragment;
+package com.example.dronepackagedelivery_app.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;

@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.Data;
+package com.example.dronepackagedelivery_app.data;
 
 public class Pair<U,V> {
     public U first;   	// first field of a Pair

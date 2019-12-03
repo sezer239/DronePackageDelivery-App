@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.Fragment;
+package com.example.dronepackagedelivery_app.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,13 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.dronepackagedelivery_app.Adapter.ProductRecyclerViewAdapter;
-import com.example.dronepackagedelivery_app.Data.Pair;
-import com.example.dronepackagedelivery_app.Data.ProductData;
-import com.example.dronepackagedelivery_app.Interface.OnCartChangedListener;
-import com.example.dronepackagedelivery_app.Interface.OnProductCountChangedListenner;
+import com.example.dronepackagedelivery_app.adapter.ProductRecyclerViewAdapter;
+import com.example.dronepackagedelivery_app.data.Pair;
+import com.example.dronepackagedelivery_app.data.ProductData;
+import com.example.dronepackagedelivery_app.ınterface.OnCartChangedListener;
 import com.example.dronepackagedelivery_app.R;
-import com.example.dronepackagedelivery_app.Data.Cart;
+import com.example.dronepackagedelivery_app.data.Cart;
 import com.example.dronepackagedelivery_app.dummy.DummyContent;
 
 import java.util.ArrayList;

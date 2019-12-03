@@ -1,12 +1,10 @@
-package com.example.dronepackagedelivery_app.Fragment;
+package com.example.dronepackagedelivery_app.fragment;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
@@ -17,11 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.dronepackagedelivery_app.Adapter.CartRecyclerViewAdapter;
-import com.example.dronepackagedelivery_app.Data.Cart;
-import com.example.dronepackagedelivery_app.Data.ProductData;
-import com.example.dronepackagedelivery_app.Interface.OnCartChangedListener;
-import com.example.dronepackagedelivery_app.Interface.OnProductCountChangedListenner;
+import com.example.dronepackagedelivery_app.adapter.CartRecyclerViewAdapter;
+import com.example.dronepackagedelivery_app.data.Cart;
+import com.example.dronepackagedelivery_app.data.ProductData;
+import com.example.dronepackagedelivery_app.ınterface.OnCartChangedListener;
 import com.example.dronepackagedelivery_app.R;
 
 import java.util.HashMap;

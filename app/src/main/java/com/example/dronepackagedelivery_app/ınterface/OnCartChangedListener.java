@@ -1,6 +1,6 @@
-package com.example.dronepackagedelivery_app.Interface;
+package com.example.dronepackagedelivery_app.ınterface;
 
-import com.example.dronepackagedelivery_app.Data.ProductData;
+import com.example.dronepackagedelivery_app.data.ProductData;
 
 import java.util.HashMap;
 

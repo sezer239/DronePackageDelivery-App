@@ -1,4 +1,4 @@
-package com.example.dronepackagedelivery_app.Fragment;
+package com.example.dronepackagedelivery_app.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,23 +7,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 
-import com.example.dronepackagedelivery_app.Adapter.FragPageAdapter;
-import com.example.dronepackagedelivery_app.Adapter.ProductRecyclerViewAdapter;
-import com.example.dronepackagedelivery_app.Data.Cart;
-import com.example.dronepackagedelivery_app.Data.ProductData;
-import com.example.dronepackagedelivery_app.Interface.OnCartChangedListener;
-import com.example.dronepackagedelivery_app.Interface.OnProductCountChangedListenner;
+import com.example.dronepackagedelivery_app.adapter.FragPageAdapter;
+import com.example.dronepackagedelivery_app.data.Cart;
 import com.example.dronepackagedelivery_app.R;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.HashMap;
 
 public class ShopFragment extends Fragment {
 

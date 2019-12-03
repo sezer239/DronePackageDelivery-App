@@ -1,13 +1,10 @@
 package com.example.dronepackagedelivery_app.dummy;
 
-import com.example.dronepackagedelivery_app.Data.Pair;
-import com.example.dronepackagedelivery_app.Data.ProductData;
+import com.example.dronepackagedelivery_app.data.Pair;
+import com.example.dronepackagedelivery_app.data.ProductData;
 
-import java.net.PortUnreachableException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DummyContent {
 

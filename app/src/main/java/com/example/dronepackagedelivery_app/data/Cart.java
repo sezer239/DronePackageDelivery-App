@@ -1,8 +1,6 @@
-package com.example.dronepackagedelivery_app.Data;
+package com.example.dronepackagedelivery_app.data;
 
-import android.util.Log;
-
-import com.example.dronepackagedelivery_app.Interface.OnCartChangedListener;
+import com.example.dronepackagedelivery_app.ınterface.OnCartChangedListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
