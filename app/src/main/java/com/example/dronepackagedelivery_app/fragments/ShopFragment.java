@@ -64,7 +64,7 @@ public class ShopFragment extends Fragment implements
         ProductFragment frag3 = ProductFragment.newInstance(2,"Atıştırmalık",mCartRef);
         ProductFragment frag4 = ProductFragment.newInstance(1,"Dondurma",mCartRef);
         ProductFragment frag5 = ProductFragment.newInstance(2,"Yiyecek",mCartRef);
-        ProductFragment frag6 = ProductFragment.newInstance(1,"İçecek",mCartRef);
+        ProductFragment frag6 = ProductFragment.newInstance(1,"İçeçek",mCartRef);
         ProductFragment frag7 = ProductFragment.newInstance(2,"Fit & Form",mCartRef);
         ProductFragment frag8 = ProductFragment.newInstance(2,"Süt & Kahvaltı",mCartRef);
         ProductFragment frag9 = ProductFragment.newInstance(2,"Temel Gıda",mCartRef);
