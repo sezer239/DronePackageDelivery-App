@@ -58,7 +58,6 @@ public class ShopFragment extends Fragment implements
         ViewPager vpPager = (ViewPager) v.findViewById(R.id.vpPager);
         TabLayout tabLayout = v.findViewById(R.id.tab_layout);
 
-
         ProductFragment frag1 = ProductFragment.newInstance(2,"Meyve & Sebze",mCartRef);
         ProductFragment frag2 = ProductFragment.newInstance(2,"Unlu Mamüller",mCartRef);
         ProductFragment frag3 = ProductFragment.newInstance(2,"Atıştırmalık",mCartRef);

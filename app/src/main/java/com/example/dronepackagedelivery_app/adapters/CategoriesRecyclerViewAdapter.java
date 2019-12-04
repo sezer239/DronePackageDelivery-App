@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
 
+    public static boolean recViewItemPressed;
     private Context context;
 
     ArrayList<Category> items = new ArrayList<>();
@@ -64,7 +65,7 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
 
     public CategoriesRecyclerViewAdapter(Context context) {
         this.context = context;
-
+        recViewItemPressed = false;
         initData();
     }
 
@@ -88,14 +89,14 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
         final String category_name = items.get(position).getCategoryName();
-//        holder.cardView.setPreventCornerOverlap(false);
-
         int resourceId = items.get(position).getId();
         ((ViewHolder) holder).getmDataImgView().setImageResource(resourceId);
         ((ViewHolder) holder).getmTextView().setText(category_name);
         ((ViewHolder) holder).getmDataImgView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(recViewItemPressed) return;
+                recViewItemPressed = true;
                 switchContent(category_name);
             }
         });

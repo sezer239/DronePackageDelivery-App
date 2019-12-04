@@ -27,6 +27,8 @@ import com.example.dronepackagedelivery_app.ınterfaces.OnCartChangedListener;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.dronepackagedelivery_app.adapters.CategoriesRecyclerViewAdapter.recViewItemPressed;
+
 public class MainActivity extends AppCompatActivity
         implements CategoriesFragment.OnFragmentInteractionListener,
         ShopFragment.OnFragmentInteractionListener,ProductFragment.OnListFragmentInteractionListener,
@@ -53,12 +55,6 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().add(R.id.container,
                 LoginFragment.newInstance(), "LOGIN_FRAGMENT").commit();
 
-        /*FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new CategoriesFragment());
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.commit();*/
-
     }
 
     @Override
@@ -67,37 +63,20 @@ public class MainActivity extends AppCompatActivity
         CartFragment cartFragment = (CartFragment) getSupportFragmentManager().findFragmentByTag("CART_FRAGMENT");
         Fragment sop = getSupportFragmentManager().findFragmentByTag("SHOP_FRAG");
         Fragment cat = getSupportFragmentManager().findFragmentByTag("CAT_FRAG");
+        Fragment loginFrag = getSupportFragmentManager().findFragmentByTag("LOGIN_FRAGMENT");
 
-        if(cartFragment != null){
+        if(loginFrag != null){
+            finish();
+        }else if(cartFragment != null){
             getSupportFragmentManager().beginTransaction().remove(cartFragment).commit();
             getSupportFragmentManager().beginTransaction().show(shopFragment).commit();
         }else if(sop != null){
             getSupportFragmentManager().beginTransaction().remove(sop).commit();
             getSupportFragmentManager().beginTransaction().show(cat).commit();
+            recViewItemPressed = false;
         }else if(cat != null){
             finish();
         }
-
-      /*  List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        for(Fragment f : fragments){
-            Log.d("HHH" , "frag name " + f.toString());
-            if(f instanceof ShopFragment){
-                getSupportFragmentManager().beginTransaction().remove(f).commit();
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new CategoriesFragment());
-                ft.addToBackStack(null);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.commit();
-                Log.d("HHH" , "BURAA");
-                return;
-            }else{
-                super.onBackPressed();
-                Log.d("HHH" , "KAPA");
-                finish();
-            }
-
-        }*/
-
     }
 
     @Override
@@ -113,16 +92,6 @@ public class MainActivity extends AppCompatActivity
 
 
     public void switchContent(String categoryName) {
-//        Intent intent = new Intent(this, MapsActivity.class);
-//        startActivity(intent);
-//        this.finish();
-/*
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        shopFragment = ShopFragment.newInstance(categoryName,shoppingCart);
-        ft.replace(R.id.container, shopFragment, "SHOP_FRAG");
-        ft.addToBackStack(null);
-        ft.commit(); */
-        Log.d("HHH" , "TAAAAG "+ categoryName);
         Fragment cat = getSupportFragmentManager().findFragmentByTag("CAT_FRAG");
         ShopFragment sf = ShopFragment.newInstance(categoryName,shoppingCart);
         getSupportFragmentManager().beginTransaction().hide(cat).commit();
