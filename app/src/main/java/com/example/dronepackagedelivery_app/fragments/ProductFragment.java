@@ -85,39 +85,78 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
                 recyclerView.setLayoutManager(gridLayoutManager);
             }
 
-            //TODO: FOR DEBUG
-            switch (mProductCatagory){
-                case "Food":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.FOOD_PROD, mListener,this);
+            switch(mProductCatagory) {
+                case "Meyve & Sebze":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.MEYVE_SEBZE, mListener, this);
                     break;
-                case "Drink":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.DRINK_PROD, mListener,this);
+                case "Unlu Mamüller":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.UNLU_MAMUL, mListener, this);
                     break;
-                case "Firut":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.FIRUT_PROD, mListener,this);
+                case "Atıştırmalık":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.ATISTIRMALIK, mListener, this);
                     break;
-                case "ASD":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.ASD_PROD, mListener,this);
+                case "Dondurma":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.DONDURMA, mListener, this);
                     break;
-                case "CCC":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.CCC_PROD, mListener,this);
+                case "Yiyecek":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.YIYECEK, mListener, this);
+                    Log.d("MMM" , "HEREE");
                     break;
-                case "BUYUK FOOD":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.BUYUK_PROD, mListener,this);
+                case "İçeçek":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.ICECEK, mListener, this);
+
                     break;
-                case "MEDUIM FOOD":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.MEDIUM_PROD, mListener,this);
+                case "Fit & Form":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.FIT_FORM, mListener, this);
+
                     break;
-                case "KUCUK YEMEK":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.KUCUK_PROD, mListener,this);
+                case "Süt & Kahvaltı":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.SUT_KAHVALTI, mListener, this);
+
                     break;
-                default:
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.FOOD_PROD, mListener,this);
+                case "Temel Gıda":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.TEMEL_GIDA, mListener, this);
+
                     break;
+                case "Kişisel Bakım":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.KISISEL_BAKIM, mListener, this);
+
+                    break;
+                case "Ev & Temizlik":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.EV_TEMIZLIK, mListener, this);
+
+                    break;
+                case "Ev & Yaşam":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.EV_YASAM, mListener, this);
+
+                    break;
+                case "Teknoloji":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.TEKNOLOJI, mListener, this);
+
+                    break;
+                case "Evcil Hayvan":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.EVCIL_HAYVAN, mListener, this);
+
+                    break;
+                case "Bebek":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.BEBEK, mListener, this);
+
+                    break;
+                case "Cinsel Sağlık":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.CINSEL_SAGLIK, mListener, this);
+
+                    break;
+                case "Giyim":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.GIYIM, mListener, this);
+                    break;
+
             }
             ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-            //INIT WITH DUMMY DATA
             recyclerView.setAdapter(productRecyclerViewAdapter);
+
+            if(productRecyclerViewAdapter == null){
+                Log.d("KKK" , mProductCatagory + " is inited its adaptor with null");
+            }
         }
         return view;
     }
@@ -135,7 +174,7 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
                 products.add(new Pair<ProductData, Integer>(key, cart.get(key)));
             }
         }
-
+        if(productRecyclerViewAdapter == null) Log.d("MMM",mProductCatagory + " adaptor null");
         productRecyclerViewAdapter.updateListProductCount(products);
     }
 
