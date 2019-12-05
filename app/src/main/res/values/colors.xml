@@ -9,4 +9,6 @@
     <color name="darkgreen">#485541</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="lightred">#FF5B5B</color>
+    <color name="brown">#825820</color>
+    <color name="lightbrown">#C0985C</color>
 </resources>
