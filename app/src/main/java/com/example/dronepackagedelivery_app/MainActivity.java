@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,15 +40,43 @@ public class MainActivity extends AppCompatActivity
     private ShopFragment shopFragment;
     private Cart shoppingCart;
 
+    private ImageButton trackOrderButton;
+    private ImageView orderCountIcon;
+
+    //TODO: PLACEHOLDER
+
+    public boolean hasOrderIsGiven;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         shoppingCart = new Cart();
         setContentView(R.layout.activity_main);
 
+        trackOrderButton = findViewById(R.id.track_order_button);
+        trackOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(hasOrderIsGiven){
+                    Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast toast = Toast.makeText(MainActivity.this, "Herhangi bir siparişiniz yok", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+        });
+
+
+        orderCountIcon = findViewById(R.id.order_count_icon);
+
+
+
         totalPrice = findViewById(R.id.cart_price);
         cartButton = findViewById(R.id.cart_button);
 
+        trackOrderButton.setVisibility(View.INVISIBLE);
+        orderCountIcon.setVisibility(View.INVISIBLE);
         totalPrice.setVisibility(View.INVISIBLE);
         cartButton.setVisibility(View.INVISIBLE);
 
@@ -151,6 +181,8 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().remove(cartFragment).commit();
         getSupportFragmentManager().beginTransaction().show(shopFragment).commit();
         */
+        hasOrderIsGiven = true;
+        orderCountIcon.setVisibility(View.VISIBLE);
         Intent intent = new Intent(MainActivity.this, MapsActivity.class);
         startActivity(intent);
     }
@@ -159,6 +191,7 @@ public class MainActivity extends AppCompatActivity
     public void onLoginCorrect() {
         totalPrice.setVisibility(View.VISIBLE);
         cartButton.setVisibility(View.VISIBLE);
+        trackOrderButton.setVisibility(View.VISIBLE);
 
         shoppingCart = new Cart();
         shoppingCart.addOnCartChangedListener(this);
