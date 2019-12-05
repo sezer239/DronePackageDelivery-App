@@ -12,4 +12,7 @@
     <color name="dark">#4b4f53</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="lightred">#FF5B5B</color>
+    <color name="brown">#825820</color>
+    <color name="lightbrown">#C0985C</color>
+    <color name="asd">#00</color>
 </resources>
