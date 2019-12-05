@@ -100,13 +100,13 @@ public class ShopFragment extends Fragment implements
         fragmentPagerAdapter.notifyDataSetChanged();
 
         switch(mArgCategory) {
-            case "Meyve & Sebze":
+            case "Ekmek Çeşitleri":
                 tabLayout.getTabAt(0).select();
                 break;
-            case "Unlu Mamüller":
+            case "240 Derece Atölye":
                 tabLayout.getTabAt(1).select();
                 break;
-            case "Atıştırmalık":
+            case "Pastane":
                 tabLayout.getTabAt(2).select();
                 break;
             case "Dondurma":
