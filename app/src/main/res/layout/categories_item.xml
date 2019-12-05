@@ -7,11 +7,11 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_margin="10dp">
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:layout_margin="20dp"
-    android:background="@android:color/darker_gray"></View>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="20dp"
+        android:background="@android:color/darker_gray"></View>
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,15 +43,17 @@
         android:textSize="20dp"
         android:textStyle="bold"/>
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    android:id="@+id/comment"
-    android:textSize="12dp"></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:id="@+id/comment"
+        android:textSize="12dp"></TextView>
 
     <View
         android:layout_width="match_parent"
@@ -59,42 +61,53 @@
         android:layout_margin="20dp"
         android:background="@android:color/darker_gray"></View>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="1">
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:text="20Tl"
-        android:layout_weight="0.4"
-        android:id="@+id/price"
-        android:textSize="12dp"></TextView>
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Sepete Ekle"
-        android:textColor="@color/button_text_color"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_weight="0.5"
-        android:textAllCaps="false"
-        android:id="@+id/buy"
-        android:textAlignment="center"
-        android:textSize="15dp"
-        android:background="@drawable/selector_bg_brown_button"></Button>
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:text="20"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/price"
+                android:textSize="18dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/icons8_turkish_lira_24"
+                ></ImageView>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Sepete Ekle"
+            android:textColor="@color/button_text_color"
+            android:layout_weight="0.4"
+            android:textAllCaps="false"
+            android:id="@+id/buy"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:background="@drawable/selector_bg_brown_button"></Button>
+
+    </LinearLayout>
     <!--       <com.joooonho.SelectableRoundedImageView-->
     <!--           xmlns:app="http://schemas.android.com/apk/res-auto"-->
     <!--           android:id="@+id/image"-->

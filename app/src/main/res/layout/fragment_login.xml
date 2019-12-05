@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/login240_eksi_maya_ekmek_1"
     android:orientation="vertical"
     tools:context=".fragments.LoginFragment">
@@ -13,6 +14,8 @@
                 android:layout_marginTop="150dp"
                 android:layout_gravity="center"
                 android:id="@+id/username"
+                android:textColor="@color/white"
+
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text=""></EditText>
@@ -21,6 +24,7 @@
                 android:layout_gravity="center"
                 android:id="@+id/password"
                 android:layout_width="250dp"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:text=""></EditText>

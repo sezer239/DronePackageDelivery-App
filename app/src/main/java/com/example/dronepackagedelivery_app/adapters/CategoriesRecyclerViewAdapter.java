@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -73,14 +74,39 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
     };
 
     String[] productComment = {
-            "Organik tam buğday unu kullanılır. İçerisinde ceviz taneleri yer alır. Omega-3 kaynağıdır ve doyuru...",
-
+            "Organik tam buğday unu kullanılır. İçerisinde ceviz taneleri yer alır. Omega-3 kaynağıdır ve doyurucudur. Diyet yapanlar rahatlıkla tüketebilir. 650 gram",
+            "Çavdar ve tam buğday unu kullanılır, çavdar ekşi mayası ile mayalanır. Ay çekirdeği, keten tohumu ve susam içerir. Tahıl kokusu yoğun olarak hissedilir. Diyet yapanlar rahatlıkla tüketebilir. 650 gram",
+            "Organik buğday ve tam buğday unu kullanılır. İçerisinde yaban mersini, mavi yemiş ve fındık yer almaktadır. Enerji kaynağıdır ve antioksidan özelliğe sahiptir. 700 gram",
+            "240 Derece yıllanmış ekşi mayası ile organik buğday ve tam buğday unları kullanılır. Gerçek 240 Derece ekşi maya lezzetini keşfedin. 650 gram",
+            "240 Derece Atölye nin özel Siyah Zeytin Sos. Kargo gönderimine uygun değildir. Sadece 240 Derece araçları ile sevk edilebilmektedir.",
+            "240 Derece Atölye nin özel Fıstık Ezmesi. Kargo gönderimine uygun değildir. Sadece 240 Derece araçları ile sevk edilebilmektedir.",
+            "240 Derece Atölye nin özel Muhammara. Kargo gönderimine uygun değildir. Sadece 240 Derece araçları ile sevk edilebilmektedir.",
+            "240 Derece Atölye nin özel Pesto Sosu. Kargo gönderimine uygun değildir. Sadece 240 Derece araçları ile sevk edilebilmektedir.",
+            "240 Derece pastane tarafından üretilen şekersiz ve unsuz kurabiye. Tadını sadece bitter çikolata parçacıklarından alır. Glüten içermeyen diyet kurabiye.",
+            "240 Derece pastane tarafından üretilen şekersiz kurabiye. Tadını sadece kuru üzüm parçacıklarından alır. Şeker ve beyaz un içermeyen diyet kurabiye.",
+            "240 Derece pastane tarafından üretilen şekersiz ve unsuz kurabiye. Tadını sadece meyve parçacıklarından alır. Glüten içermeyen diyet kurabiye.",
+            "240 Derece pastane tarafından üretilen Kavılca unlu tuzlu çubuk. Üzeri susamlı kendisi gevrektir, glisemik indesksi ve gluten oranı çok düşüktür. 250gram ve 500gramlık kutularda adrese teslim edilir."
     };
 
     String[] headers = new String[]{
             "Ekmek Çeşitleri",
             "240 Derece Atölye",
             "Pastane",
+    };
+
+    String[] productPrices = new String[]{
+            "22",
+            "20",
+            "23",
+            "15",
+            "20",
+            "20",
+            "20",
+            "25",
+            "100",
+            "100",
+            "100",
+            "80"
     };
 
     int[] viewTypes = new int[]{
@@ -116,7 +142,7 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
                 itemList.add(header);
                 countHeader++;
             }else if(viewTypes[i] == 0){
-                Category category = new Category(images[countImage], categoryName[countImage] , productNames[countImage],0);
+                Category category = new Category(images[countImage], categoryName[countImage] , productNames[countImage],0, productComment[countImage], productPrices[countImage]);
                 itemList.add(category);
                 countImage++;
             }
@@ -126,10 +152,6 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View v;
-//        v = LayoutInflater.from(context).inflate(R.layout.categories_item, parent, false);
-//        return new ViewHolder(v);
-
         View v;
         if (viewType == VIEW_TYPE_IMAGE) {
             v = LayoutInflater.from(context).inflate(R.layout.categories_item, parent, false);
@@ -151,6 +173,16 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
                 int resourceId = category.getId();
                 ((ViewHolder) holder).getmDataImgView().setImageResource(resourceId);
                 ((ViewHolder) holder).getmTextView().setText(productName);
+                ((ViewHolder) holder).getmTextViewComment().setText(category.getProductComment());
+                ((ViewHolder) holder).getmTextViewPrice().setText(category.getPrice());
+                ((ViewHolder) holder).getmButtonBuy().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(recViewItemPressed) return;
+                        recViewItemPressed = true;
+                        switchContent(category_name);
+                    }
+                });
                 ((ViewHolder) holder).getmDataImgView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -195,13 +227,32 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
     class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView mDataImgView;
         private final TextView mTextView;
+        private final TextView mTextViewComment;
+        private final TextView mTextViewPrice;
+        private final Button mButtonBuy;
+
+
 
         public ViewHolder(View v) {
             super(v);
             mDataImgView = v.findViewById(R.id.image);
             mTextView = v.findViewById(R.id.category_name);
+            mTextViewComment = v.findViewById(R.id.comment);
+            mTextViewPrice = v.findViewById(R.id.price);
+            mButtonBuy = v.findViewById(R.id.buy);
         }
 
+        public TextView getmTextViewComment() {
+            return mTextViewComment;
+        }
+
+        public TextView getmTextViewPrice() {
+            return mTextViewPrice;
+        }
+
+        public Button getmButtonBuy() {
+            return mButtonBuy;
+        }
         public TextView getmTextView() {
             return mTextView;
         }
