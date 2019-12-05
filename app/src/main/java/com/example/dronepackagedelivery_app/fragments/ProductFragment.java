@@ -1,5 +1,6 @@
 package com.example.dronepackagedelivery_app.fragments;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.dronepackagedelivery_app.adapters.ProductRecyclerViewAdapter;
 import com.example.dronepackagedelivery_app.data.Pair;
@@ -27,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class ProductFragment extends Fragment implements ProductRecyclerViewAdapter.OnProductButtonPressed , OnCartChangedListener {
+public class ProductFragment extends Fragment implements ProductRecyclerViewAdapter.OnProductButtonPressed , OnCartChangedListener  {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private static final String ARG_PRODUCT_CATEGORY = "product-category";
@@ -72,11 +74,11 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
 
 
-        if (view instanceof RecyclerView) {
+        if (recyclerView != null) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
@@ -85,15 +87,25 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
                 recyclerView.setLayoutManager(gridLayoutManager);
             }
 
+            Log.d("FFF", "EMEK INITTED");
             switch(mProductCatagory) {
+                case "Ekmek Çeşitleri":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.EKMEK_CESITLERI, mListener, this);
+                    break;
+                case "240 Derece Atölye":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.ATOLYE, mListener, this);
+                    break;
+                case "Pastane":
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.PASTANE, mListener, this);
+                    break;
                 case "Meyve & Sebze":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.MEYVE_SEBZE, mListener, this);
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.EKMEK_CESITLERI, mListener, this);
                     break;
                 case "Unlu Mamüller":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.UNLU_MAMUL, mListener, this);
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.ATOLYE, mListener, this);
                     break;
                 case "Atıştırmalık":
-                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.ATISTIRMALIK, mListener, this);
+                    productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.PASTANE, mListener, this);
                     break;
                 case "Dondurma":
                     productRecyclerViewAdapter = new ProductRecyclerViewAdapter(DummyContent.DONDURMA, mListener, this);
@@ -217,6 +229,19 @@ public class ProductFragment extends Fragment implements ProductRecyclerViewAdap
             mCartRef.removeItem(product);
         }else{
             mCartRef.putItem(product, itemPurchsed);
+        }
+    }
+
+    boolean doubleOpen = false;
+    @Override
+    public void onContentClicked(Pair<ProductData, Integer> productData) {
+        //TODO: FIX DOUBLE CLICK
+        Fragment itemDetailFragment = getFragmentManager().findFragmentByTag("PROD_DETAIL_FRAG");
+        if(itemDetailFragment == null){
+            getFragmentManager().beginTransaction().add(R.id.container, ItemDetailFragment.newInstance(productData,mCartRef), "PROD_DETAIL_FRAG").commit();
+        }else {
+            getFragmentManager().beginTransaction().remove(itemDetailFragment).commit();
+            getFragmentManager().beginTransaction().add(R.id.container, ItemDetailFragment.newInstance(productData,mCartRef), "PROD_DETAIL_FRAG").commit();
         }
     }
 

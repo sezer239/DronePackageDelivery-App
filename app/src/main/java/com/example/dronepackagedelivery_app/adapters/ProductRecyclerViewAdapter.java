@@ -110,11 +110,20 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
                 }
             });
 
+            holder.mContentView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnProductButtonPressed.onContentClicked(mValues.get(position));
+                    Log.d("JJJ", "BUTT CLICK");
+                }
+            });
+
+
 
         int buyCount = holder.mProductData.second;
 
         if(buyCount > 0){
-            holder.mProductCount.setText(buyCount + "");
+            holder.mProductCount.setText("Adet " + buyCount);
             holder.mRemoveButton.setVisibility(View.VISIBLE);
             holder.mRemoveButton.setEnabled(true);
 
@@ -146,6 +155,7 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         public final Button mAddButton;
         public final Button mRemoveButton;
         public final ImageView mProductImage;
+        public final View mContentView;
 
         public ViewHolder(View view) {
             super(view);
@@ -156,6 +166,7 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
             mAddButton = view.findViewById(R.id.add_button);
             mRemoveButton = view.findViewById(R.id.remove_button);
             mProductImage = view.findViewById(R.id.product_image);
+            mContentView = view.findViewById(R.id.product_content);
         }
 
         @Override
@@ -167,5 +178,6 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     public interface OnProductButtonPressed{
         void onPlusButtonPressed(ProductData product, int index);
         void onMinusButtonPressed(ProductData product, int index);
+        void onContentClicked(Pair<ProductData, Integer> productDataInteger);
     }
 }

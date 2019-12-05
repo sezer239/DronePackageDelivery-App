@@ -6,6 +6,7 @@ public class ProductData {
     private String mCategory;
     private String mProductName;
     private float mProductPrice;
+    private String mDetail;
 
     public ProductData(String mProductId, String mProductName, float mProductPrice, String category) {
         this.mProductId = mProductId;
@@ -46,6 +47,13 @@ public class ProductData {
         this.mCategory = mCategory;
     }
 
+    public String getmDetail() {
+        return mDetail;
+    }
+
+    public void setmDetail(String mDetail) {
+        this.mDetail = mDetail;
+    }
 
     @Override
     public int hashCode() {

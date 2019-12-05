@@ -27,19 +27,23 @@ public class DummyContent {
     public static final List<Pair<ProductData,Integer>> CINSEL_SAGLIK = new ArrayList<Pair<ProductData,Integer>>();
     public static final List<Pair<ProductData,Integer>> GIYIM = new ArrayList<Pair<ProductData,Integer>>();
 
+    public static final List<Pair<ProductData,Integer>> EKMEK_CESITLERI = new ArrayList<Pair<ProductData,Integer>>();
+    public static final List<Pair<ProductData,Integer>> ATOLYE = new ArrayList<Pair<ProductData,Integer>>();
+    public static final List<Pair<ProductData,Integer>> PASTANE = new ArrayList<Pair<ProductData,Integer>>();
+
 
     private static final int COUNT = 10;
 
     static {
         // Add some sample items.
         for (int i = 0; i < COUNT; i++) {
-            MEYVE_SEBZE.add(createDummyItem(i,"Meyve & Sebze"));
+            EKMEK_CESITLERI.add(createDummyItem(i,"Ekmek Çeşitleri"));
         }
         for (int i = COUNT; i < COUNT * 2; i++) {
-            UNLU_MAMUL.add(createDummyItem(i,"Unlu Mamüller"));
+            ATOLYE.add(createDummyItem(i,"240 Derece Atölye"));
         }
         for (int i = COUNT * 2; i < COUNT * 3; i++) {
-            ATISTIRMALIK.add(createDummyItem(i,"Atıştırmalık"));
+            PASTANE.add(createDummyItem(i,"Pastane"));
         }
 
         for (int i = COUNT * 3; i < COUNT * 4; i++) {

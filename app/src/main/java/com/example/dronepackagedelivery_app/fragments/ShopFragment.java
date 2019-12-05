@@ -58,10 +58,10 @@ public class ShopFragment extends Fragment implements
         ViewPager vpPager = (ViewPager) v.findViewById(R.id.vpPager);
         TabLayout tabLayout = v.findViewById(R.id.tab_layout);
 
-        ProductFragment frag1 = ProductFragment.newInstance(2,"Meyve & Sebze",mCartRef);
-        ProductFragment frag2 = ProductFragment.newInstance(2,"Unlu Mamüller",mCartRef);
-        ProductFragment frag3 = ProductFragment.newInstance(2,"Atıştırmalık",mCartRef);
-        ProductFragment frag4 = ProductFragment.newInstance(1,"Dondurma",mCartRef);
+        ProductFragment frag1 = ProductFragment.newInstance(2,"Ekmek Çeşitleri",mCartRef);
+        ProductFragment frag2 = ProductFragment.newInstance(2,"240 Derece Atölye",mCartRef);
+        ProductFragment frag3 = ProductFragment.newInstance(2,"Pastane",mCartRef);
+      /*  ProductFragment frag4 = ProductFragment.newInstance(1,"Dondurma",mCartRef);
         ProductFragment frag5 = ProductFragment.newInstance(2,"Yiyecek",mCartRef);
         ProductFragment frag6 = ProductFragment.newInstance(1,"İçeçek",mCartRef);
         ProductFragment frag7 = ProductFragment.newInstance(2,"Fit & Form",mCartRef);
@@ -75,11 +75,12 @@ public class ShopFragment extends Fragment implements
         ProductFragment frag15 = ProductFragment.newInstance(2,"Bebek",mCartRef);
         ProductFragment frag16 = ProductFragment.newInstance(2,"Cinsel Sağlık",mCartRef);
         ProductFragment frag17 = ProductFragment.newInstance(2,"Giyim",mCartRef);
-
+*/
         fragmentPagerAdapter.addPage(frag1);
         fragmentPagerAdapter.addPage(frag2);
         fragmentPagerAdapter.addPage(frag3);
-        fragmentPagerAdapter.addPage(frag4);
+
+    /*    fragmentPagerAdapter.addPage(frag4);
         fragmentPagerAdapter.addPage(frag5);
         fragmentPagerAdapter.addPage(frag6);
         fragmentPagerAdapter.addPage(frag7);
@@ -93,7 +94,7 @@ public class ShopFragment extends Fragment implements
         fragmentPagerAdapter.addPage(frag15);
         fragmentPagerAdapter.addPage(frag16);
         fragmentPagerAdapter.addPage(frag17);
-
+*/
         vpPager.setAdapter(fragmentPagerAdapter);
         tabLayout.setupWithViewPager(vpPager);
         fragmentPagerAdapter.notifyDataSetChanged();

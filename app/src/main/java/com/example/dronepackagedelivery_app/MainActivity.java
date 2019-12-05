@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.example.dronepackagedelivery_app.data.ProductData;
 import com.example.dronepackagedelivery_app.dummy.DummyActivity;
 import com.example.dronepackagedelivery_app.fragments.CartFragment;
 import com.example.dronepackagedelivery_app.fragments.CategoriesFragment;
+import com.example.dronepackagedelivery_app.fragments.ItemDetailFragment;
 import com.example.dronepackagedelivery_app.fragments.LoginFragment;
 import com.example.dronepackagedelivery_app.fragments.ProductFragment;
 import com.example.dronepackagedelivery_app.fragments.ShopFragment;
@@ -33,12 +35,16 @@ public class MainActivity extends AppCompatActivity
         implements CategoriesFragment.OnFragmentInteractionListener,
         ShopFragment.OnFragmentInteractionListener,ProductFragment.OnListFragmentInteractionListener,
         OnCartChangedListener, CartFragment.OnFragmentInteractionListener , CartFragment.OnItemsPurchased,
+        ItemDetailFragment.OnItemDetailInteraction,
         LoginFragment.OnLoginListener {
 
     private TextView totalPrice;
     private ImageButton cartButton;
     private ShopFragment shopFragment;
     private Cart shoppingCart;
+
+    private ImageView packgeDeliveryIcon;
+    private ImageView orderCountIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,11 @@ public class MainActivity extends AppCompatActivity
 
         totalPrice = findViewById(R.id.cart_price);
         cartButton = findViewById(R.id.cart_button);
+        packgeDeliveryIcon = findViewById(R.id.track_order_button);
+        orderCountIcon = findViewById(R.id.order_count_icon);
+
+        packgeDeliveryIcon.setVisibility(View.INVISIBLE);
+        orderCountIcon.setVisibility(View.INVISIBLE);
 
         totalPrice.setVisibility(View.INVISIBLE);
         cartButton.setVisibility(View.INVISIBLE);
@@ -64,8 +75,12 @@ public class MainActivity extends AppCompatActivity
         Fragment sop = getSupportFragmentManager().findFragmentByTag("SHOP_FRAG");
         Fragment cat = getSupportFragmentManager().findFragmentByTag("CAT_FRAG");
         Fragment loginFrag = getSupportFragmentManager().findFragmentByTag("LOGIN_FRAGMENT");
+        Fragment itemDetailFragment = getSupportFragmentManager().findFragmentByTag("PROD_DETAIL_FRAG");
 
-        if(loginFrag != null){
+        if(itemDetailFragment != null){
+            getSupportFragmentManager().beginTransaction().remove(itemDetailFragment).commit();
+        }
+        else if(loginFrag != null){
             finish();
         }else if(cartFragment != null){
             getSupportFragmentManager().beginTransaction().remove(cartFragment).commit();
@@ -120,14 +135,17 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().remove(cartFragment).commit();
         getSupportFragmentManager().beginTransaction().show(shopFragment).commit();
         */
+        orderCountIcon.setVisibility(View.VISIBLE);
         Intent intent = new Intent(MainActivity.this, MapsActivity.class);
         startActivity(intent);
     }
+
 
     @Override
     public void onLoginCorrect() {
         totalPrice.setVisibility(View.VISIBLE);
         cartButton.setVisibility(View.VISIBLE);
+        packgeDeliveryIcon.setVisibility(View.VISIBLE);
 
         shoppingCart = new Cart();
         shoppingCart.addOnCartChangedListener(this);
@@ -184,5 +202,22 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onCartClearedListener() {
 
+    }
+
+    @Override
+    public void onAddCartButtonPressed(ItemDetailFragment itemDetailFragment) {
+        shoppingCart.putItem(itemDetailFragment.getProduct().first , itemDetailFragment.getProduct().second);
+        Toast.makeText(this, "Ürünler sepetinize eklendi", Toast.LENGTH_LONG).show();
+
+
+        getSupportFragmentManager().beginTransaction().remove(itemDetailFragment).commit();
+    }
+
+    @Override
+    public void onRemoveCartButtonPressed(ItemDetailFragment itemDetailFragment) {
+        shoppingCart.removeItem(itemDetailFragment.getProduct().first);
+        Toast.makeText(this, "Ürünler sepetinizden çıkarıldı", Toast.LENGTH_LONG).show();
+
+        getSupportFragmentManager().beginTransaction().remove(itemDetailFragment).commit();
     }
 }

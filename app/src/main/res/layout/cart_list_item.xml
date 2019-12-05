@@ -13,13 +13,13 @@
         android:layout_height="wrap_content">
 
     <LinearLayout
-        android:background="@drawable/rounded_bg_edge_green"
+        android:background="@drawable/rounded_bg_brown"
         android:layout_width="match_parent"
         android:layout_height="80dp">
         <ImageView
             android:layout_margin="1dp"
             android:id="@+id/product_image"
-            android:src="@drawable/appl1"
+            android:src="@drawable/baked_goods"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ImageView>
     </LinearLayout>
@@ -29,7 +29,7 @@
         android:id="@+id/product_name"
         android:layout_marginTop="10dp"
         android:text="Banan BANAN"
-        android:textColor="@color/lightgreen"
+        android:textColor="@color/brown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></TextView>
 
@@ -64,7 +64,7 @@
                 android:id="@+id/remove_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_bg_button_light_red"
+                android:background="@drawable/rounded_button_light_brown"
                 android:textAlignment="center"
                 android:text="-"
                 android:textAppearance="?attr/textAppearanceListItem"
@@ -88,11 +88,11 @@
                 android:id="@+id/add_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_bg_button_green"
+                android:background="@drawable/rounded_button_brown"
                 android:textAlignment="center"
                 android:text="+"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:textColor="@color/darkgreen"
+                android:textColor="@color/white"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
@@ -111,7 +111,8 @@
             android:id="@+id/cart_product_remove"
             android:shadowColor="@color/transparent"
             android:layout_margin="45dp"
-            android:background="@drawable/rounded_bg_button_light_red"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button_light_brown"
             android:text="X"
             android:layout_gravity="center"
             android:layout_width="match_parent"
