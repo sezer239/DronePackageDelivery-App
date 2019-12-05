@@ -72,6 +72,11 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
             "Susamlı Kavılca Çubuk"
     };
 
+    String[] productComment = {
+            "Organik tam buğday unu kullanılır. İçerisinde ceviz taneleri yer alır. Omega-3 kaynağıdır ve doyuru...",
+
+    };
+
     String[] headers = new String[]{
             "Ekmek Çeşitleri",
             "240 Derece Atölye",
