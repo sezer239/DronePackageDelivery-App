@@ -142,9 +142,10 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter{
             case VIEW_TYPE_IMAGE:
                 Category category = (Category) itemList.get(position);
                 final String category_name = category.getCategoryName();
+                String productName = category.getProductName();
                 int resourceId = category.getId();
                 ((ViewHolder) holder).getmDataImgView().setImageResource(resourceId);
-                ((ViewHolder) holder).getmTextView().setText(category_name);
+                ((ViewHolder) holder).getmTextView().setText(productName);
                 ((ViewHolder) holder).getmDataImgView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
