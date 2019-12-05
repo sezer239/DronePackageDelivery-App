@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_margin="5dp">
-
+    android:layout_margin="10dp">
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_margin="20dp"
+    android:background="@android:color/darker_gray"></View>
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="55dp"
         app:cardElevation="10dp"
         android:id="@+id/card_view"
-        android:background="@color/cardview_dark_background"
         android:layout_gravity="center">
+        <!--        android:background="@color/cardview_dark_background"-->
 
         <com.makeramen.roundedimageview.RoundedImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,8 +28,8 @@
             android:layout_gravity="center"
             app:riv_corner_radius="20dip"
             app:riv_mutate_background="true"
-            android:layout_height="200dp"
-            android:layout_width="200dp"/>
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -33,12 +37,64 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:textColor="@color/brown"
         android:layout_marginTop="5dp"
         android:textAlignment="center"
-        android:textSize="12dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/comment"
+    android:textSize="12dp"></TextView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="20dp"
+        android:background="@android:color/darker_gray"></View>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:text="20Tl"
+        android:layout_weight="0.4"
+        android:id="@+id/price"
+        android:textSize="12dp"></TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Sepete Ekle"
+        android:textColor="@color/button_text_color"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_weight="0.5"
+        android:textAllCaps="false"
+        android:id="@+id/buy"
+        android:textAlignment="center"
+        android:textSize="15dp"
+        android:background="@drawable/selector_bg_brown_button"></Button>
+</LinearLayout>
     <!--       <com.joooonho.SelectableRoundedImageView-->
     <!--           xmlns:app="http://schemas.android.com/apk/res-auto"-->
     <!--           android:id="@+id/image"-->

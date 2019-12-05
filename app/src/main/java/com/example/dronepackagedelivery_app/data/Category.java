@@ -1,19 +1,32 @@
 package com.example.dronepackagedelivery_app.data;
 
-public class Category {
+
+import com.example.dronepackagedelivery_app.common.Data;
+
+public class Category extends Data {
 
     private int id;
 
     private String categoryName;
 
+    private String productName;
+
     public Category() {
     }
 
-    public Category(int id, String categoryName) {
+    public Category(int id, String categoryName, String productName,int type) {
         this.id = id;
         this.categoryName = categoryName;
+        this.productName = productName;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
     public int getId() {
         return id;
@@ -30,4 +43,5 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
 }

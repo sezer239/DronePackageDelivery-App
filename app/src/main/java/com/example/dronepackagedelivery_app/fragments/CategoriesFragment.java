@@ -6,11 +6,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.dronepackagedelivery_app.R;
 import com.example.dronepackagedelivery_app.adapters.CategoriesRecyclerViewAdapter;
@@ -57,12 +59,16 @@ public class CategoriesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_categories, container, false);
         categoriesRecyclerView = v.findViewById(R.id.categories);
-        GridLayoutManager glm = new GridLayoutManager(getActivity(), 2);
-        glm.setOrientation(GridLayoutManager.VERTICAL);
-        glm.scrollToPosition(0);
-        categoriesRecyclerView.setLayoutManager(glm);
+        LinearLayoutManager lm = new LinearLayoutManager(getActivity());
+        lm.setOrientation(LinearLayoutManager.VERTICAL);
+        lm.scrollToPosition(0);
+
+//        GridLayoutManager glm = new GridLayoutManager(getActivity(), 1);
+//        glm.setOrientation(GridLayoutManager.VERTICAL);
+//        glm.scrollToPosition(0);
+        categoriesRecyclerView.setLayoutManager(lm);
         categoriesRecyclerView.setHasFixedSize(true);
-        categoriesRecyclerView.setLayoutManager(glm);
+        categoriesRecyclerView.setLayoutManager(lm);
         CategoriesRecyclerViewAdapter adapter = new CategoriesRecyclerViewAdapter(getActivity());
         categoriesRecyclerView.setAdapter(adapter);
         return v;
